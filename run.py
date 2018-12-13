@@ -1,7 +1,7 @@
 from app import app
 from creata_table import create_tables
 
-db._init_app(app)
+create_tables._init_app(app)
 
 
 @app.before_first_request

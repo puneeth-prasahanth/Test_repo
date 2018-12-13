@@ -13,6 +13,9 @@ app = Flask(__name__)
 app.secret_key='jame'
 API = Api(app)
 
+@app.before_first_request
+def create_tables_method():
+    create_tables.tables_creation()
 
 jwt=JWT(app,authentication,identity)
 
@@ -27,5 +30,6 @@ API.add_resource(UserRequest, '/request')
 
 if __name__ == '__main__':
     from creata_table import create_tables
-    db._init_app(app)
+    #create_tables._init_app(app)
+    create_tables_method()
     app.run(port=5000, debug=True)

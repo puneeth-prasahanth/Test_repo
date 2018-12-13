@@ -3,7 +3,12 @@ import sqlite3
 
 class create_tables():
 
-    def tables_creation(self):
+    def __init__(self):
+        print("In the selF")
+
+    @classmethod
+    def tables_creation(cls):
+
             connection=sqlite3.connect('data.db')
             con_cur=connection.cursor()
 

@@ -1,4 +1,5 @@
 import sqlite3
+from models.Users import UserModel
 
 from flask_restful import Resource,reqparse
 
@@ -17,7 +18,7 @@ class UserRequest(Resource):
     def post(self):
         data=UserRequest.parser.parse_args()
 
-        if user.db_validate(data['username']):
+        if UserModel.db_validate(data['username']):
             return {"message":"User already exists"}
         connection=sqlite3.connect('data.db')
         con_cur=connection.cursor()
